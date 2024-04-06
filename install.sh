@@ -11,8 +11,12 @@ domains=("www.mitsubishi.com" "updates.cdn-apple.com" "gadebate.un.org" "www.cdn
 export UUID=${UUID:-$(cat /proc/sys/kernel/random/uuid)}
 export HOST=${HOST:-$(curl ipv4.ip.sb)}
 
-hysni=$(curl -s ipv6.ip.sb || curl -s ipv4.ip.sb)
+hysni=$(curl -s ipv6.ip.sb || curl -s api64.ipify.org )
 hysni="$(echo $hysni | sed 's/:/-/g' | sed 's/\./-/g').sslip.io"
+
+apt install iptables -y
+yum install iptables -y
+dnf install iptables -y
 
 # 安装Xray
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
