@@ -149,7 +149,7 @@ o_vmess_url=$(sed -e "s/IP/${HOST}/g" \
                    -e "s/VMESSPORT/${vmessport}/g" \
                    -e "s/TIME/$(date +%H%M)/g" <<< "${temp_url}")
 vmess_url=$(echo -n "${o_vmess_url}" | base64 -w 0)
-hy_url="hy2://${UUID}@{HOST}:1443?mport=10000-15000&sni=${hysni}"
+hy_url="hy2://${UUID}@${HOST}:1443?mport=10000-15000&sni=${hysni}"
 
 # 节点信息保存到文件中
 echo "---------- VLESS Reality URL ----------" > ~/_xray_url_
