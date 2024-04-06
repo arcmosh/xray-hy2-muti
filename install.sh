@@ -149,7 +149,7 @@ o_vmess_url=$(sed -e "s/IP/${HOST}/g" \
                    -e "s/VMESSPORT/${vmessport}/g" \
                    -e "s/TIME/$(date +%H%M)/g" <<< "${temp_url}")
 vmess_url=$(echo -n "${o_vmess_url}" | base64 -w 0)
-hy_url="hy2://${UUID}@${HOST}:1443?mport=10000-15000&sni=${hysni}"
+hy_url="hy2://${UUID}@${HOST}:1443?sni=${hysni}"
 
 # 节点信息保存到文件中
 echo "---------- VLESS Reality URL ----------" > ~/_xray_url_
@@ -161,6 +161,8 @@ echo "vmess://${vmess_url}" >> ~/_xray_url_
 echo >> ~/_xray_url_
 echo "---------- HY2 URL ----------" >> ~/_xray_url_
 echo $hy_url >> ~/_xray_url_
+echo "hy2协议可选打开配置:" >> ~/_xray_url_
+echo "端口跳跃10000-15000；上行/下行带宽依据客户端网络情况设置；正确设置可提高使用体验" >> ~/_xray_url_
 echo >> ~/_xray_url_
 echo "以上节点信息保存在 ~/_xray_url_ 中, 日后用 cat _xray_url_ 查看" >> ~/_xray_url_
 echo >> ~/_xray_url_
