@@ -11,7 +11,7 @@ domains=("www.mitsubishi.com" "updates.cdn-apple.com" "gadebate.un.org" "www.cdn
 export UUID=${UUID:-$(cat /proc/sys/kernel/random/uuid)}
 export HOST=${HOST:-$(curl ipv4.ip.sb)}
 
-hysni=${$(curl ipv6.ip.sb):-$(curl ipv4.ip.sb)}
+hysni=$(curl -s ipv6.ip.sb || curl -s ipv4.ip.sb)
 hysni="$(echo $hysni | sed 's/:/-/g' | sed 's/\./-/g').sslip.io"
 
 # 安装Xray
